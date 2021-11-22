@@ -1,0 +1,20 @@
+.list-div{
+    max-height: min-content;
+    width: 60%;
+    margin: 1rem auto;
+    text-align: center;
+    padding: .5rem 1rem;
+    border: 1px solid #ccc;
+}
+
+.title{
+    font-size: 26px;
+}
+
+.num-list{
+    list-style: none;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
