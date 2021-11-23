@@ -2,7 +2,7 @@
     background-color: blueviolet;
     max-height: 4rem;
     max-width: 20rem;
-    padding: .5rem 4rem;
+    padding: .75rem 4rem;
     text-align: center;
     border: none;
     outline: none;
@@ -10,9 +10,6 @@
     color: white;
     border-radius: 8px;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .btn:hover{

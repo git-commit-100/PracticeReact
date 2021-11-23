@@ -1,0 +1,7 @@
+.users-list{
+    list-style: none;
+    padding-inline: 0;
+    width: 100%;
+    font-size: 20px;
+}
+
