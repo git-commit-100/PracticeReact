@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import UsersList from "./components/Users/UsersList";
 import Button from "./components/UI/Button";
 import "./App.css";
-
-const USERS_DATA = [
-  { id: 1, name: "Tony Stark", age: 29 },
-  { id: 2, name: "Peter Parker", age: 19 },
-  { id: 3, name: "Thor God Of Lightning", age: 125 },
-  { id: 4, name: "Groot", age: 3 },
-  { id: 5, name: "Wade Watts", age: 28 },
-];
+import UserFinder from "./components/Users/UserFinder";
 
 // function App() {
 //   const [showUsers, setShowUsers] = useState(true);
@@ -31,7 +24,7 @@ const USERS_DATA = [
 class App extends Component {
   constructor() {
     super();
-    this.state = { showUsers: false };
+    this.state = { showUsers: true, users: [] };
   }
 
   handleTogglingUsers() {
@@ -40,13 +33,20 @@ class App extends Component {
     });
   }
 
+  handleUsersFilter(arr){
+    this.setState({users: [...arr]})
+  }
+
   render() {
     return (
       <div className="App">
+        <UserFinder
+          onUserFilter={this.handleUsersFilter.bind(this)}
+        />
         <Button onClick={this.handleTogglingUsers.bind(this)}>
           {this.state.showUsers ? "Hide Users" : "Show Users"}
         </Button>
-        {this.state.showUsers && <UsersList users={USERS_DATA} />}
+        {this.state.showUsers && <UsersList users={this.state.users} />}
       </div>
     );
   }
