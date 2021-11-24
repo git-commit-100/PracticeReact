@@ -62,6 +62,10 @@ class UserFinder extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //intentionally put error to check error boundary
+    if (this.state.filteredUsers.length === 0) {
+      throw new Error("No elements Found");
+    }
     //runs at every component update
     if (prevState.searchInput !== this.state.searchInput) {
       const updatedUsers = this.context.users.filter((user) => {

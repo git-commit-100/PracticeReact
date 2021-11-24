@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserFinder from "./components/User/UserFinder";
 import "./App.css";
 import UserContext from "./components/store/user-context";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // function App() {
 //   const [showUsers, setShowUsers] = useState(true);
@@ -53,7 +54,9 @@ class App extends Component {
     return (
       <UserContext.Provider value={{ users: USERS_DATA }}>
         <div className="App">
-          <UserFinder />
+          <ErrorBoundary>
+            <UserFinder />
+          </ErrorBoundary>
         </div>
       </UserContext.Provider>
     );
