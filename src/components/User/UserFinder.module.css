@@ -1,0 +1,18 @@
+
+label{
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: .5rem;
+}
+
+.search-user-input{
+    font-size: 18px;
+    padding: .25rem .75rem;
+    outline: none;
+    font-weight: lighter;
+}
+
+.search-user-input:focus{
+    outline: none;
+    border: 2px solid #A020F0;
+}
