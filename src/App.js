@@ -1,66 +1,39 @@
-import React, { Component } from "react";
-import UserFinder from "./components/User/UserFinder";
+import React from "react";
 import "./App.css";
-import UserContext from "./components/store/user-context";
-import ErrorBoundary from "./components/ErrorBoundary";
+import Movies from "./components/Movies/Movies";
+import Button from "./components/UI/Button";
+import Card from "./components/UI/Card";
 
-// function App() {
-//   const [showUsers, setShowUsers] = useState(true);
-
-//   const handleTogglingUsers = () => {
-//     setShowUsers((prevState) => !prevState);
-//   };
-
-//   return (
-//     <div className="App">
-//       <Button onClick={handleTogglingUsers}>
-//         {showUsers ? "Hide Users" : "Show Users"}
-//       </Button>
-//       {showUsers && <UsersList users={USERS_DATA} />}
-//     </div>
-//   );
-// }
-
-const USERS_DATA = [
+const DUMMY_MOVIES = [
   {
     id: 1,
-    name: "Tony Stark",
-    age: 30,
+    movieName: "Deadpool",
+    dateOfRelease: "28/08/2013",
+    desc: "Produced by Marvel. A comedy superhero film."
   },
   {
     id: 2,
-    name: "Peter Parker",
-    age: 18,
+    movieName: "Dumb And Dumber",
+    dateOfRelease: "08/03/2019",
+    desc: "Classic comedy. A story about 2 friends who are crazy af."
   },
   {
     id: 3,
-    name: "Almighty Thor",
-    age: 135,
-  },
-  {
-    id: 4,
-    name: "Starlord",
-    age: 28,
-  },
-  {
-    id: 5,
-    name: "Steve Rogers",
-    age: 90,
+    movieName: "Alvin and the Chipmunks",
+    dateOfRelease: "13/01/2020",
+    desc: "What happens when squirrels are able to talk in english ? Find out in this movie."
   },
 ];
 
-class App extends Component {
-  render() {
-    return (
-      <UserContext.Provider value={{ users: USERS_DATA }}>
-        <div className="App">
-          <ErrorBoundary>
-            <UserFinder />
-          </ErrorBoundary>
-        </div>
-      </UserContext.Provider>
-    );
-  }
+function App() {
+  return (
+    <>
+      <Card className="fetch-movie-card">
+        <Button className="fetch-movie-btn">Fetch Movies</Button>
+      </Card>
+      <Movies movies={DUMMY_MOVIES} />
+    </>
+  );
 }
 
 export default App;

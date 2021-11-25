@@ -1,18 +1,22 @@
-.btn{
-    background-color: blueviolet;
-    max-height: 4rem;
-    max-width: 20rem;
-    padding: .75rem 4rem;
-    text-align: center;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 1rem 0;
+.btn {
+  background-color: white;
+  font-size: 18px;
+  color: blueviolet;
+  font-weight: 600;
+  padding: 0.25rem 1rem;
+  outline: none;
+  text-align: center;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid blueviolet;
+  cursor: pointer;
 }
 
-.btn:hover{
-   opacity: .9;
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn:active{
+    background-color: blueviolet;
+    color: white;
 }

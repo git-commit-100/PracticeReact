@@ -1,12 +1,8 @@
-.App{
-    background-color: white;
-    height: min-content;
-    width: 60%;
-    margin: 1rem auto;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+div.fetch-movie-card {
+  padding: 2rem 1.5rem;
+}
+
+button.fetch-movie-btn {
+  padding: 0.5rem 1rem;
+  width: 50%;
 }
