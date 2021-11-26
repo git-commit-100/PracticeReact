@@ -15,9 +15,11 @@ function Movies(props) {
             dateOfRelease={movie.dateOfRelease}
             desc={movie.desc}
             movie={movie}
+            imgPath={movie.imgPath}
           />
         );
       })}
+    <p className={styles["end-of-list"]}> ~ End Of List ~ </p>
     </ul>
   );
 

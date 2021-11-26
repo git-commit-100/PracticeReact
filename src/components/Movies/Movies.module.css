@@ -1,4 +1,16 @@
-.movies-list{
-    list-style: none;
-    padding-inline: 0;
+movies-div {
+  margin: 0 auto;
+}
+
+.movies-list {
+  list-style: none;
+  padding-inline: 0;
+}
+
+p.end-of-list {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0em;
+  color: gray;
+  text-align: center;
+  font-style: italic;
 }

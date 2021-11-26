@@ -1,37 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Movies from "./components/Movies/Movies";
 import Button from "./components/UI/Button";
 import Card from "./components/UI/Card";
 
-const DUMMY_MOVIES = [
-  {
-    id: 1,
-    movieName: "Deadpool",
-    dateOfRelease: "28/08/2013",
-    desc: "Produced by Marvel. A comedy superhero film."
-  },
-  {
-    id: 2,
-    movieName: "Dumb And Dumber",
-    dateOfRelease: "08/03/2019",
-    desc: "Classic comedy. A story about 2 friends who are crazy af."
-  },
-  {
-    id: 3,
-    movieName: "Alvin and the Chipmunks",
-    dateOfRelease: "13/01/2020",
-    desc: "What happens when squirrels are able to talk in english ? Find out in this movie."
-  },
-];
+const api_token = "2b177622c7adae941661b7937a709421";
 
 function App() {
+  const [moviesData, setMoviesData] = useState([]);
+  const [showMovie, setShowMovie] = useState(false);
+
+  function handleMovieRequest() {
+    setShowMovie(true);
+    fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_token}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const transformedData = data.results.map((movie) => {
+          return {
+            id: movie.id,
+            movieName:
+              movie.title ||
+              movie.name ||
+              movie.original_title ||
+              movie.original_name,
+            dateOfRelease: movie.release_date || movie.first_air_date,
+            desc: movie.overview,
+            imgPath: `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`,
+          };
+        });
+        console.log(transformedData);
+        setMoviesData(transformedData);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  let comp_jsx = (
+    <Card>
+      <p className="no-data">Click Above to get trending Moviezzz...</p>
+    </Card>
+  );
+
+  if (showMovie) {
+    comp_jsx = <Movies movies={moviesData} />;
+  }
+
   return (
     <>
       <Card className="fetch-movie-card">
-        <Button className="fetch-movie-btn">Fetch Movies</Button>
+        <Button className="fetch-movie-btn" onClick={handleMovieRequest}>
+          Fetch Movies
+        </Button>
       </Card>
-      <Movies movies={DUMMY_MOVIES} />
+      {comp_jsx}
     </>
   );
 }
