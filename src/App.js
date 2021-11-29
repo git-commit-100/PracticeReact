@@ -8,40 +8,78 @@ const api_token = "2b177622c7adae941661b7937a709421";
 
 function App() {
   const [moviesData, setMoviesData] = useState([]);
-  const [showMovie, setShowMovie] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  function handleMovieRequest() {
-    setShowMovie(true);
-    fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${api_token}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const transformedData = data.results.map((movie) => {
-          return {
-            id: movie.id,
-            movieName:
-              movie.title ||
-              movie.name ||
-              movie.original_title ||
-              movie.original_name,
-            dateOfRelease: movie.release_date || movie.first_air_date,
-            desc: movie.overview,
-            imgPath: `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`,
-          };
-        });
-        console.log(transformedData);
+  async function handleMovieRequest() {
+    try {
+      setIsLoading(true);
+      //clear out previous errors
+      setError(null);
+      //fetching data from an api
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${api_token}`
+      );
+
+      const data = await response.json();
+
+      //some error occurred (api supported json return)
+      if (data.success === false) {
+        throw new Error(data.status_message);
+      }
+
+      //converting response into custom object with custom keys
+      const transformedData = data.results.map((movie) => {
+        return {
+          id: movie.id,
+          movieName:
+            movie.title ||
+            movie.name ||
+            movie.original_title ||
+            movie.original_name,
+          dateOfRelease: movie.release_date || movie.first_air_date,
+          desc: movie.overview,
+          imgPath: `https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`,
+        };
+      });
+
+      //imagine it takes 500ms for request to process
+      setTimeout(() => {
         setMoviesData(transformedData);
-      })
-      .catch((err) => console.log(err));
+        setIsLoading(false);
+      }, 500);
+    } catch (error) {
+      setError(error.message);
+    }
   }
 
-  let comp_jsx = (
+  //initial content
+  let content = (
     <Card>
-      <p className="no-data">Click Above to get trending Moviezzz...</p>
+      <p className="no-data">No Movies Found ! Maybe Try Again ?</p>
     </Card>
   );
 
-  if (showMovie) {
-    comp_jsx = <Movies movies={moviesData} />;
+  //loading text
+  if (isLoading) {
+    content = (
+      <Card>
+        <p className="no-data">Loading.....</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    content = (
+      <Card>
+        <p className="no-data">{error}</p>
+      </Card>
+    );
+  }
+
+  //successful request
+  if (!isLoading && !error && moviesData.length > 0) {
+    content = <Movies movies={moviesData} />;
   }
 
   return (
@@ -51,7 +89,7 @@ function App() {
           Fetch Movies
         </Button>
       </Card>
-      {comp_jsx}
+      {content}
     </>
   );
 }

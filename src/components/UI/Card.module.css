@@ -11,10 +11,9 @@
   align-items: center;
 }
 
-@media (max-width: 700px) {
-  .card {
-    width: 90%;
-    padding: .5rem 1rem;
-    margin: 1rem auto;
+@media (max-width: 700px){
+  .card{
+    width: 85%;
+    padding: 1rem;
   }
 }

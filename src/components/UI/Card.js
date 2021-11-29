@@ -5,7 +5,8 @@ function Card(props) {
   return (
     <div
       className={`${
-        props.className + " " + styles["card"] || "" + styles["card"]
+        (props.className && props.className + " " + styles["card"]) ||
+        styles["card"]
       }`}
     >
       {props.children}
