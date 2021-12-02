@@ -1,0 +1,46 @@
+h3.header-h3 {
+  text-align: center;
+  margin: 1rem;
+  font-size: 20px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+label {
+  font-size: 18px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+input,
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+  margin: 0.5rem 0 1.5rem 0;
+  outline: none;
+  font-size: 16px;
+  padding: 0.25rem 0.5rem;
+  font-weight: lighter;
+  font-family: "Ubuntu", sans-serif;
+  border: 2px solid #ccc;
+}
+
+textarea {
+  min-height: 6rem;
+}
+
+input:focus,
+textarea:focus {
+  border: 2px solid blueviolet;
+}
+
+.submit-btn {
+  width: 50%;
+  padding: 0.5rem 1rem;
+}

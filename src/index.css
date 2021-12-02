@@ -25,3 +25,18 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+div.fetch-movie-card {
+  padding: 2rem 1.5rem;
+}
+
+button.fetch-movie-btn {
+  padding: 0.5rem 1rem;
+  width: 50%;
+}
+
+@media (max-width: 700px){
+  div.fetch-movie-card {
+    padding: 2rem 1rem;
+  }
+}

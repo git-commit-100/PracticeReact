@@ -14,16 +14,20 @@ function Movies(props) {
             movieName={movie.movieName}
             dateOfRelease={movie.dateOfRelease}
             desc={movie.desc}
-            movie={movie}
             imgPath={movie.imgPath}
           />
         );
       })}
-    <p className={styles["end-of-list"]}> ~ End Of List ~ </p>
+      <p className={styles["end-of-list"]}> ~ End Of List ~ </p>
     </ul>
   );
 
-  return <Card className={styles["movies-div"]}>{movieJsx}</Card>;
+  return (
+    <Card className={styles["movies-div"]}>
+      <h3 className={styles["header-h3"]}>Movies from Firebase</h3>
+      {movieJsx}
+    </Card>
+  );
 }
 
 export default Movies;

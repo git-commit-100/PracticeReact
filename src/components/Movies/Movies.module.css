@@ -2,9 +2,16 @@ movies-div {
   margin: 0 auto;
 }
 
+h3.header-h3 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+}
+
 .movies-list {
   list-style: none;
   padding-inline: 0;
+  margin-block: .25rem;
 }
 
 @media (max-width: 700px) {

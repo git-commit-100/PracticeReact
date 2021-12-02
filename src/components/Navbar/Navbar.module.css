@@ -1,0 +1,37 @@
+.nav-bar {
+  background-color: #fff5ed;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0.25rem;
+  height: 100%;
+}
+
+div.pop-back1 {
+  background: url("../../assets/pop.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1.brand-h1 {
+  font-weight: 900;
+  margin-block: 0;
+  margin: 1rem 0;
+}
+
+@media (max-width: 700px) {
+    .nav-bar {
+        background: url("../../assets/pop.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    div.pop-back1 {
+      background: none;
+    }
+}

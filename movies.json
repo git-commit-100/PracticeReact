@@ -1,0 +1,81 @@
+{
+    "movies": [
+        {
+            "movieName": "Venom: Let There Be Carnage",
+            "id": 580489,
+            "desc": "After finding a host body in investigative reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the alter ego of serial killer Cletus Kasady.",
+            "dateOfRelease": "2021-09-30",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg"
+        },
+        {
+            "id": 566525,
+            "movieName": "Shang-Chi and the Legend of the Ten Rings",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/1BIoJGKbXjdFDAqUEiA2VHqkK1Z.jpg",
+            "desc": "Shang-Chi must confront the past he thought he left behind when he is drawn into the web of the mysterious Ten Rings organization.",
+            "dateOfRelease": "2021-09-01"
+        },
+        {
+            "movieName": "No Time to Die",
+            "id": 370172,
+            "desc": "Bond has left active service and is enjoying a tranquil life in Jamaica. His peace is short-lived when his old friend Felix Leiter from the CIA turns up asking for help. The mission to rescue a kidnapped scientist turns out to be far more treacherous than expected, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
+            "dateOfRelease": "2021-09-29",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/iUgygt3fscRoKWCV1d0C7FbM9TP.jpg"
+        },
+        {
+            "movieName": "Red Notice",
+            "id": 512195,
+            "dateOfRelease": "2021-11-04",
+            "desc": "An Interpol-issued Red Notice is a global alert to hunt and capture the world's most wanted. But when a daring heist brings together the FBI's top profiler and two rival criminals, there's no telling what will happen.",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/wdE6ewaKZHr62bLqCn7A2DiGShm.jpg"
+        },
+        {
+            "movieName": "Dune",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+            "desc": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their fear will survive.",
+            "dateOfRelease": "2021-09-15",
+            "id": 438631
+        },
+        {
+            "desc": "King Charles VI declares that Knight Jean de Carrouges settle his dispute with his squire, Jacques Le Gris, by challenging him to a duel.",
+            "dateOfRelease": "2021-10-13",
+            "movieName": "The Last Duel",
+            "id": 617653,
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/zjrJE0fpzPvX8saJXj8VNfcjBoU.jpg"
+        },
+        {
+            "movieName": "Spider-Man: No Way Home",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+            "id": 634649,
+            "desc": "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a Super Hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
+            "dateOfRelease": "2021-12-15"
+        },
+        {
+            "desc": "The Eternals are a team of ancient aliens who have been living on Earth in secret for thousands of years. When an unexpected tragedy forces them out of the shadows, they are forced to reunite against mankind’s most ancient enemy, the Deviants.",
+            "dateOfRelease": "2021-11-03",
+            "id": 524434,
+            "movieName": "Eternals",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/6AdXwFTRTAzggD2QUTt5B7JFGKL.jpg"
+        },
+        {
+            "id": 716612,
+            "movieName": "Spencer",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/7GcqdBKaMM9BWXWN07BirBMkcBF.jpg",
+            "desc": "During her Christmas holidays with the royal family at the Sandringham estate in Norfolk, England, Diana decides to leave her marriage to Prince Charles.",
+            "dateOfRelease": "2021-11-05"
+        },
+        {
+            "movieName": "tick, tick...BOOM!",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/DPmfcuR8fh8ROYXgdjrAjSGA0o.jpg",
+            "id": 537116,
+            "desc": "On the cusp of his 30th birthday, Jonathon Larson, a promising young theater composer, navigates love, friendship, and the pressures of life as an artist in New York City.",
+            "dateOfRelease": "2021-11-11"
+        },
+        {
+            "desc": "When a single mom and her two kids arrive in a small town, they begin to discover their connection to the original Ghostbusters and the secret legacy their grandfather left behind.",
+            "dateOfRelease": "2021-11-11",
+            "id": 425909,
+            "movieName": "Ghostbusters: Afterlife",
+            "imgPath": "https://www.themoviedb.org/t/p/w220_and_h330_face/kHNWm8YDl1Pf6tyzluLagbtkU94.jpg"
+        }
+    ]
+}
