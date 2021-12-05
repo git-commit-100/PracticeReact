@@ -1,3 +1,5 @@
+<a href="https://app.daily.dev/javaMonk"><img src="https://github.com/git-commit-100/PracticeReact/blob/main/devcard.svg" width="400" alt="Java Monk's Dev Card"/></a>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
