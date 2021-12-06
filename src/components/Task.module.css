@@ -1,0 +1,78 @@
+.task-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 0.25rem 0.5rem;
+}
+
+/* rotating notes and bg-color*/
+.task-item:nth-child(even) {
+  transform: rotate(4deg);
+  background-color: #fdfdc9;
+}
+
+.task-item:nth-child(odd) {
+  transform: rotate(-3deg);
+  background-color: #cfc;
+}
+
+.task-item:nth-child(5n) {
+  background-color: #ccf;
+}
+
+.task-title {
+  max-height: 4rem;
+  overflow: auto;
+  text-align: center;
+}
+
+.task-body {
+  margin-block-start: 0;
+  font-family: "Reenie Beanie", cursive;
+  font-size: 26px;
+  max-height: 10rem;
+  overflow: auto;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  /* rotating notes and bg-color*/
+  .task-item:nth-child(even) {
+    transform: rotate(4deg);
+    background-color: #cfc;
+  }
+
+  .task-item:nth-child(odd) {
+    transform: rotate(-3deg);
+    background-color: #fdfdc9;
+  }
+
+  .task-item:nth-child(3n) {
+    transform: rotate(4deg);
+    background-color: #ccf;
+  }
+
+  .task-item:nth-child(5n) {
+    transform: rotate(-3deg);
+  }
+}
+
+@media (max-width: 1150px) {
+    /* rotating notes and bg-color*/
+    .task-item:nth-child(even) {
+      transform: rotate(4deg);
+      background-color: #cfc;
+    }
+  
+    .task-item:nth-child(odd) {
+      transform: rotate(-3deg);
+      background-color: #fdfdc9;
+    }
+  
+    .task-item:nth-child(3n) {
+      transform: rotate(4deg);
+      background-color: #ccf;
+    }
+  }
