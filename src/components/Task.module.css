@@ -5,6 +5,28 @@
   align-items: center;
   color: black;
   padding: 0.25rem 0.5rem;
+  box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+.cancel-task {
+  position: absolute;
+  top: .25rem;
+  padding: 0 2px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  align-self: flex-end;
+  color: darkgray;
+}
+
+.cancel-task:hover {
+  transform: scale(1);
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.cancel-task:active {
+  color: darkgray;
 }
 
 /* rotating notes and bg-color*/
@@ -22,19 +44,23 @@
   background-color: #ccf;
 }
 
-.task-title {
+h3.task-title {
   max-height: 4rem;
+  width: 100%;
   overflow: auto;
   text-align: center;
 }
 
 .task-body {
   margin-block-start: 0;
+  margin-block-end: .5rem;
   font-family: "Reenie Beanie", cursive;
   font-size: 26px;
-  max-height: 10rem;
+  max-height: 8rem;
+  width: 100%;
   overflow: auto;
   text-align: center;
+  white-space: pre-wrap;
 }
 
 @media (max-width: 500px) {
@@ -60,19 +86,19 @@
 }
 
 @media (max-width: 1150px) {
-    /* rotating notes and bg-color*/
-    .task-item:nth-child(even) {
-      transform: rotate(4deg);
-      background-color: #cfc;
-    }
-  
-    .task-item:nth-child(odd) {
-      transform: rotate(-3deg);
-      background-color: #fdfdc9;
-    }
-  
-    .task-item:nth-child(3n) {
-      transform: rotate(4deg);
-      background-color: #ccf;
-    }
+  /* rotating notes and bg-color*/
+  .task-item:nth-child(even) {
+    transform: rotate(4deg);
+    background-color: #cfc;
   }
+
+  .task-item:nth-child(odd) {
+    transform: rotate(-3deg);
+    background-color: #fdfdc9;
+  }
+
+  .task-item:nth-child(3n) {
+    transform: rotate(4deg);
+    background-color: #ccf;
+  }
+}

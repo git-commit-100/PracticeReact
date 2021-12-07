@@ -54,7 +54,7 @@ function TaskForm(props) {
           value={inputVal.body}
         />
         <Button type="submit" className={styles["submit-btn"]}>
-          Add Task
+          Add Note
         </Button>
       </form>
     </Card>

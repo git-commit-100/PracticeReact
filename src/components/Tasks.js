@@ -4,8 +4,20 @@ import styles from "./Tasks.module.css";
 import Task from "./Task";
 
 function Tasks(props) {
+  const handleDeleteTask = (id) => {
+    props.toDelete(id);
+  };
+
   const contentJsx = props.tasks.map((task) => {
-    return <Task key={task.id} task={task} />;
+    return (
+      <Task
+        toDelete={handleDeleteTask}
+        key={task.id}
+        id={task.id}
+        title={task.title}
+        body={task.body}
+      />
+    );
   });
 
   return (

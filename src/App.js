@@ -1,46 +1,77 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import Tasks from "./components/Tasks";
 import Card from "./UI/Card";
+import axios from "axios";
 
-const data = [
-  {
-    id: "61adbeb48c4387b37d66e512",
-    body: "Lorem nisi eiusmod nostrud aliquip. Consequat cillum officia tempor consectetur nulla.",
-    title: "Lorem cillum",
-  },
-  {
-    id: "61adbeb4271526b54c4a8b7f",
-    body: "Sit pariatur ea elit incididunt sint proident mollit sint adipisicing aliqua ea enim irure. Eiusmod ex veniam mollit sunt est minim eu.",
-    title: "enim ea sdfdfsd fsedefsdfdfsdf",
-  },
-  {
-    id: "61adbeb488de4d6c6316628e",
-    body: "Commodo cillum ad nostrud proident nostrud aliqua proident. Dolor non ex mollit laborum veniam enim dolor.",
-    title: "mollit cupidatat",
-  },
-  {
-    id: "61adbeb477069a3983be661e",
-    body: "Quis minim quis ipsum ea ad dolor dolore ex mollit id. Commodo sint laborum sit sunt.",
-    title: "tempor occaecat",
-  },
-  {
-    id: "61adbeb40060f80b4c9c36e0",
-    body: "Aute do excepteur sint magna ex consectetur qui fugiat sunt cillum. Adipisicing nostrud veniam in laborum.",
-    title: "sunt elit",
-  },
-  {
-    id: "61adbeb40066f80b4c9c36e0",
-    body: "Aute do excepteur sint magna ex consectetur qui fugiat sunt cillum. Adipisicing nostrud veniam in laborum.",
-    title: "sunt elit",
-  },
-];
+const url = "https://react-https-61e56-default-rtdb.firebaseio.com/tasks.json";
 
 function App() {
-  const [tasks, setTasks] = useState(data);
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  //firebase general methods
+  async function getRequest(url) {
+    try {
+      setLoading(true);
+      const response = await axios.get(url);
+      const tasksToBeLoaded = [];
+
+      for (let key in response.data) {
+        tasksToBeLoaded.push(response.data[key]);
+      }
+      setLoading(false);
+      setTasks(tasksToBeLoaded);
+    } catch (error) {
+      setError(error.message + " , Try again ?!");
+    }
+  }
+
+  async function postRequest(url, data) {
+    try {
+      const response = await axios.post(url, data);
+    } catch (error) {
+      setError(error.message + " , Try again ?!");
+    }
+  }
+
+  async function deleteRequest(url, id) {
+    try {
+      const response = await axios.delete(url, { data: { id: id } });
+      console.log(response);
+    } catch (error) {
+      setError(error.message + " , Try again ?!");
+    }
+  }
+
+  useEffect(() => {
+    getRequest(url);
+  }, []);
 
   const handleAddingTask = (obj) => {
-    console.table(obj);
+    //POST request
+    postRequest(url, obj);
+    setTasks((prevTasks) => {
+      return [...prevTasks, obj];
+    });
+  };
+
+  const handleDeleteTask = (taskId) => {
+    const taskToBeDeleted = tasks.find((task) => {
+      return task.id === taskId;
+    });
+    if (
+      window.confirm(
+        `Do you really want to delete post-it with title ${taskToBeDeleted.title} ?`
+      )
+    ) {
+      deleteRequest(url, taskToBeDeleted.id);
+      const updatedTasks = tasks.filter((task) => {
+        return task.id !== taskId;
+      });
+      setTasks(updatedTasks);
+    }
   };
 
   let contentJsx = (
@@ -48,8 +79,24 @@ function App() {
       <p className="no-tasks">" When your heart speaks , take good notes ! "</p>
     </Card>
   );
-  if (tasks.length > 0) {
-    contentJsx = <Tasks tasks={tasks} />;
+
+  if (loading) {
+    contentJsx = (
+      <Card>
+        <p className="no-tasks">Loading....</p>
+      </Card>
+    );
+  }
+
+  if (error) {
+    contentJsx = (
+      <Card>
+        <p className="no-tasks">{error}</p>
+      </Card>
+    );
+  }
+  if (tasks.length > 0 && !error && !loading) {
+    contentJsx = <Tasks toDelete={handleDeleteTask} tasks={tasks} />;
   }
 
   return (
