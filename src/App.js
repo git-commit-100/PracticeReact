@@ -2,77 +2,52 @@ import { useEffect, useState } from "react";
 import TaskForm from "./components/TaskForm";
 import Tasks from "./components/Tasks";
 import Card from "./UI/Card";
-import axios from "axios";
-
-const url = "https://react-https-61e56-default-rtdb.firebaseio.com/tasks.json";
+import useHttp from "./hooks/use-http";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [appError, setAppError] = useState(null);
+  const { loading, error, sendRequest } = useHttp();
 
-  //firebase general methods
-  async function getRequest(url) {
-    try {
-      setLoading(true);
-      const response = await axios.get(url);
-      const tasksToBeLoaded = [];
+  function dataTransform(data) {
+    const loadingTasks = [];
 
-      for (let key in response.data) {
-        tasksToBeLoaded.push(response.data[key]);
-      }
-      setLoading(false);
-      setTasks(tasksToBeLoaded);
-    } catch (error) {
-      setError(error.message + " , Try again ?!");
+    for (let key in data) {
+      //converting id into firebase generated id
+      let newTask = {
+        ...data[key],
+        id: key,
+      };
+      loadingTasks.push(newTask);
     }
-  }
 
-  async function postRequest(url, data) {
-    try {
-      const response = await axios.post(url, data);
-    } catch (error) {
-      setError(error.message + " , Try again ?!");
-    }
-  }
-
-  async function deleteRequest(url, id) {
-    try {
-      const response = await axios.delete(url, { data: { id: id } });
-      console.log(response);
-    } catch (error) {
-      setError(error.message + " , Try again ?!");
-    }
+    setTasks(loadingTasks);
   }
 
   useEffect(() => {
-    getRequest(url);
-  }, []);
+    sendRequest(
+      {
+        url: "https://react-https-61e56-default-rtdb.firebaseio.com/tasks.json",
+      },
+      dataTransform
+    );
+  }, [sendRequest]);
 
-  const handleAddingTask = (obj) => {
-    //POST request
-    postRequest(url, obj);
-    setTasks((prevTasks) => {
-      return [...prevTasks, obj];
-    });
-  };
+  function handleAddingTask(taskObj) {
+    const updatedTasks = [...tasks, taskObj];
+    setTasks(updatedTasks);
+  }
 
-  const handleDeleteTask = (taskId) => {
-    const taskToBeDeleted = tasks.find((task) => {
-      return task.id === taskId;
+  function handleDeleteTask(id) {
+    const updatedTasks = tasks.filter((task) => {
+      return task.id !== id;
     });
-    if (
-      window.confirm(
-        `Do you really want to delete post-it with title ${taskToBeDeleted.title} ?`
-      )
-    ) {
-      deleteRequest(url, taskToBeDeleted.id);
-      const updatedTasks = tasks.filter((task) => {
-        return task.id !== taskId;
-      });
-      setTasks(updatedTasks);
-    }
-  };
+    setTasks(updatedTasks);
+  }
+
+  function handleErrors(err) {
+    setAppError(err.message);
+  }
 
   let contentJsx = (
     <Card>
@@ -88,20 +63,22 @@ function App() {
     );
   }
 
-  if (error) {
+  if (error || appError) {
     contentJsx = (
       <Card>
         <p className="no-tasks">{error}</p>
       </Card>
     );
   }
-  if (tasks.length > 0 && !error && !loading) {
-    contentJsx = <Tasks toDelete={handleDeleteTask} tasks={tasks} />;
+  if (tasks.length > 0 && !error && !appError && !loading) {
+    contentJsx = (
+      <Tasks toDelete={handleDeleteTask} tasks={tasks} error={handleErrors} />
+    );
   }
 
   return (
     <>
-      <TaskForm onAddTask={handleAddingTask} />
+      <TaskForm onAddTask={handleAddingTask} error={handleErrors} />
       {contentJsx}
     </>
   );

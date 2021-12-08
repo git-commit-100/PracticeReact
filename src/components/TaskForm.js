@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styles from "./TaskForm.module.css";
+import useHttp from "../hooks/use-http";
 
 const initialInput = {
   id: "",
@@ -10,6 +11,7 @@ const initialInput = {
 };
 
 function TaskForm(props) {
+  const { loading, error, sendRequest } = useHttp();
   const [inputVal, setInputVal] = useState(initialInput);
 
   const handleInputChange = (e) => {
@@ -20,12 +22,33 @@ function TaskForm(props) {
     });
   };
 
+  function dataTransform(task, firebaseId) {
+    const generatedId = firebaseId.name;
+    const updatedTask = { ...task, id: generatedId };
+    props.onAddTask(updatedTask);
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const updatedInput = { ...inputVal, id: new Date().getTime() };
-    props.onAddTask(updatedInput);
+
+    sendRequest(
+      {
+        url: "https://react-https-61e56-default-rtdb.firebaseio.com/tasks.json",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: updatedInput,
+      },
+      dataTransform.bind(null, updatedInput)
+    );
+
     setInputVal(initialInput);
   };
+
+  if (error) {
+    //passing errors upwards
+    props.error(error);
+  }
 
   return (
     <Card>
