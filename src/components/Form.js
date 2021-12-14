@@ -1,74 +1,72 @@
+import React from "react";
 import useInput from "../hooks/use-input";
 import styles from "./Form.module.css";
 
 function Form() {
   const {
-    value: enteredName,
-    isValid: isNameValid,
-    hasError: doesNameHaveError,
-    handleInputChange: handleNameChange,
-    handleInputBlur: handleNameBlur,
-    resetInput: resetName,
-  } = useInput((name) => name.trim() !== "");
+    value: enteredFirstName,
+    isValid: isFirstNameValid,
+    wasTouched: wasFirstNameTouched,
+    hasError: doesFirstNameHaveError,
+    handleInputChange: handleFirstNameChange,
+    handleInputBlur: handleFirstNameBlur,
+    resetInput: resetFirstName,
+  } = useInput((firstName) => firstName.trim() !== "");
+
+  const {
+    value: enteredLastName,
+    isValid: isLastNameValid,
+    wasTouched: wasLastNameTouched,
+    hasError: doesLastNameHaveError,
+    handleInputChange: handleLastNameChange,
+    handleInputBlur: handleLastNameBlur,
+    resetInput: resetLastName,
+  } = useInput((lastName) => lastName.trim() !== "");
 
   const {
     value: enteredEmail,
     isValid: isEmailValid,
+    wasTouched: wasEmailTouched,
     hasError: doesEmailHaveError,
     handleInputChange: handleEmailChange,
     handleInputBlur: handleEmailBlur,
     resetInput: resetEmail,
   } = useInput((email) => email.trim() !== "" && email.includes("@"));
 
-  const {
-    value: enteredAge,
-    isValid: isAgeValid,
-    hasError: doesAgeHaveError,
-    handleInputChange: handleAgeChange,
-    handleInputBlur: handleAgeBlur,
-    resetInput: resetAge,
-  } = useInput((age) => age > 17 && age < 75);
-
-  //overall form validity
   let isFormValid = false;
 
-  /* in this if check we can add multiple input
-  checks which will result in overall form validity */
-  if (isNameValid && isEmailValid && isAgeValid) {
+  if (isFirstNameValid && isLastNameValid && isEmailValid) {
     isFormValid = true;
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    if (isNameValid && isEmailValid) {
-      const newUser = {
-        id: new Date().getTime(),
-        name: enteredName,
-        email: enteredEmail,
-        age: enteredAge,
-      };
-      console.table(newUser);
-      resetName();
-      resetEmail();
-      resetAge();
-    }
+    const newUser = {
+      id: new Date().getTime(),
+      name: enteredFirstName + " " + enteredLastName,
+      email: enteredEmail,
+    };
+    console.table(newUser);
+    resetFirstName();
+    resetLastName();
+    resetEmail();
   }
 
   //DOM helpers
-  const jsxForNameError = doesNameHaveError ? (
-    <p className={styles["error-text"]}>Name Cannot Be Empty</p>
+  let contentJsxFirstName = doesFirstNameHaveError ? (
+    <p className={styles["error-text"]}>First Name cannot be empty</p>
   ) : (
     ""
   );
 
-  const jsxForEmailError = doesEmailHaveError ? (
+  let contentJsxLastName = doesLastNameHaveError ? (
+    <p className={styles["error-text"]}>Last Name cannot be empty</p>
+  ) : (
+    ""
+  );
+
+  let contentJsxEmail = doesEmailHaveError ? (
     <p className={styles["error-text"]}>Provide a valid Email</p>
-  ) : (
-    ""
-  );
-
-  const jsxForAgeError = doesAgeHaveError ? (
-    <p className={styles["error-text"]}>Age must be older than 18</p>
   ) : (
     ""
   );
@@ -77,46 +75,52 @@ function Form() {
     <div className={styles["form-div"]}>
       <h3 className={styles["header"]}>Basic Form Validation</h3>
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="input-name">Your Name</label>
+        <label htmlFor="input-first-name">First Name</label>
         <input
-          id="input-name"
-          value={enteredName}
-          onChange={handleNameChange}
-          onBlur={handleNameBlur}
           type="text"
+          id="input-first-name"
           autoComplete="none"
-          className={doesNameHaveError ? styles["input-invalid"] : ""}
+          value={enteredFirstName}
+          onChange={handleFirstNameChange}
+          onBlur={handleFirstNameBlur}
+          className={`${
+            doesFirstNameHaveError ? styles["input-invalid"] : ""
+          } ${wasFirstNameTouched ? styles["input-valid"] : ""}`}
         />
-        {jsxForNameError}
-        <label htmlFor="input-email">Your Email</label>
+        {contentJsxFirstName}
+
+        <label htmlFor="input-last-name">Last Name</label>
         <input
+          type="text"
+          id="input-last-name"
+          autoComplete="none"
+          value={enteredLastName}
+          onChange={handleLastNameChange}
+          onBlur={handleLastNameBlur}
+          className={`${doesLastNameHaveError ? styles["input-invalid"] : ""} ${
+            wasLastNameTouched ? styles["input-valid"] : ""
+          }`}
+        />
+        {contentJsxLastName}
+
+        <label htmlFor="input-email">Email Here</label>
+        <input
+          type="email"
           id="input-email"
+          autoComplete="none"
           value={enteredEmail}
           onChange={handleEmailChange}
           onBlur={handleEmailBlur}
-          type="email"
-          autoComplete="none"
-          className={doesEmailHaveError ? styles["input-invalid"] : ""}
+          className={`${doesEmailHaveError ? styles["input-invalid"] : ""} ${
+            wasEmailTouched ? styles["input-valid"] : ""
+          }`}
         />
-        {jsxForEmailError}
-        <label htmlFor="input-age">Your Age</label>
-        <input
-          id="input-age"
-          value={enteredAge}
-          onChange={handleAgeChange}
-          onBlur={handleAgeBlur}
-          type="number"
-          autoComplete="none"
-          className={doesAgeHaveError ? styles["input-invalid"] : ""}
-          min="18"
-          max="75"
-          step="1"
-        />
-        {jsxForAgeError}
+        {contentJsxEmail}
+
         <button
           type="submit"
-          disabled={!isFormValid}
           className={styles["submit-btn"]}
+          disabled={!isFormValid}
         >
           Submit
         </button>
