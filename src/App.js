@@ -1,9 +1,9 @@
-import Form from "./components/Form";
+import Counter from "./components/Counter";
 
 function App() {
   return (
     <>
-      <Form />
+      <Counter />
     </>
   );
 }
