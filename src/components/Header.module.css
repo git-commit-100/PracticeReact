@@ -1,0 +1,51 @@
+div.navbar-div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
+nav.navbar {
+  padding: 0.5rem 2rem;
+  background-color: #660088;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h2.brand {
+  margin-block: 0.5rem;
+  color: white;
+  font-size: 32px;
+  align-self: center;
+}
+
+ul.nav-links {
+  width: 30%;
+  list-style: none;
+  padding-inline: 0;
+  margin-block: 0.5rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+li.nav-link > a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+li.nav-link > a:hover,
+li.nav-link > a:active {
+  border: 1px solid thistle;
+  padding: 0.25rem 0.5rem;
+  border-radius: 25px;
+  background-color: thistle;
+  color: #660088;
+}
