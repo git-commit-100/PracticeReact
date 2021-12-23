@@ -1,21 +1,15 @@
-import { useState } from "react";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import UserProfile from "./components/UserProfile";
+import { useSelector } from "react-redux";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState();
-
-  const userLoginHandler = (user) => {
-    setIsLoggedIn(true);
-    setUser(user);
-  };
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <>
-      <Header isLoggedIn={isLoggedIn} />
-      {!isLoggedIn && <Login onUserLogin={userLoginHandler} />}
-      {isLoggedIn && <UserProfile user={user} />}
+      <Header />
+      {!isAuthenticated && <Login />}
+      {isAuthenticated && <UserProfile />}
     </>
   );
 }

@@ -2,8 +2,12 @@ import React from "react";
 import Card from "./UI/Card";
 import styles from "./Login.module.css";
 import useInput from "../hooks/useInput";
+import { authSliceActions } from "../store/reduxStore";
+import { useDispatch } from "react-redux";
 
 function Login(props) {
+  const dispatch = useDispatch();
+
   let isFormValid = false;
   const {
     value: emailInput,
@@ -37,7 +41,8 @@ function Login(props) {
         email: emailInput,
         password: passwordInput,
       };
-      props.onUserLogin(newUser);
+      dispatch(authSliceActions.login());
+      dispatch(authSliceActions.setUser(newUser));
       //resetting user input fields
       resetEmailInput();
       resetPasswordInput();

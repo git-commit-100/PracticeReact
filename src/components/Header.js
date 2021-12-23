@@ -1,17 +1,28 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { authSliceActions } from "../store/reduxStore";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header(props) {
-  const navBar = props.isLoggedIn && (
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(authSliceActions.logout());
+  };
+
+  const navBar = isAuthenticated && (
     <ul className={styles["nav-links"]}>
       <li className={styles["nav-link"]}>
-        <a href="!#">Home</a>
+        <a href="#">Home</a>
       </li>
       <li className={styles["nav-link"]}>
-        <a href="!#">About</a>
+        <a href="#">About</a>
       </li>
       <li className={`${styles["nav-link"]} ${styles["logout-link"]}`}>
-        <a href="!#">Logout</a>
+        <a href="#" onClick={logoutHandler}>
+          Logout
+        </a>
       </li>
     </ul>
   );
