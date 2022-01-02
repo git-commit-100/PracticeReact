@@ -4,7 +4,7 @@ import Products from "./components/Shop/Products";
 import { useDispatch, useSelector } from "react-redux";
 import Notification from "./components/UI/Notification";
 import { useEffect } from "react";
-import { sendCartData } from "./store/cartItemsSlice";
+import { fetchCartData, sendCartData } from "./store/cartActionsThunks";
 
 //prevent sending request on first time
 let isInitial = true;
@@ -18,10 +18,15 @@ function App() {
   useEffect(() => {
     if (isInitial) {
       isInitial = false;
+      //fetching data
+      dispatch(fetchCartData());
       return;
     }
 
-    dispatch(sendCartData(cart));
+    if (cart.isChanged) {
+      //send cart data only when cart really has changed
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
 
   return (
