@@ -1,27 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./Header.module.css";
+import styles from "./MainNavigation.module.css";
 
-function Header() {
+function MainNavigation() {
   return (
     <header className={styles["header"]}>
-      <nav className={styles["navbar"]}>
-        <h2 className={styles["brand"]}>Routing</h2>
-        <ul className={styles["nav-links"]}>
-          <li className={styles["nav-link"]}>
+      <h3 className={styles["logo"]}>Quotes</h3>
+      <nav className={styles["nav"]}>
+        <ul>
+          <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles["active"] : "")}
-              to="/home"
+              to="/quotes"
             >
-              Home
+              All Quotes
             </NavLink>
           </li>
-          <li className={styles["nav-link"]}>
+          <li>
             <NavLink
               className={({ isActive }) => (isActive ? styles["active"] : "")}
-              to="/products"
+              to="/new-quote"
             >
-              Products
+              Add Quote
             </NavLink>
           </li>
         </ul>
@@ -30,4 +30,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default MainNavigation;
