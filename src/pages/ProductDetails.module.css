@@ -1,0 +1,17 @@
+h2.heading {
+  margin-top: 6rem;
+  color: white;
+  text-align: center;
+}
+
+h4.product-heading {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+p.product-info {
+  color: white;
+  font-size: 22px;
+  text-align: center;
+}

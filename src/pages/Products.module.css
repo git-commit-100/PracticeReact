@@ -1,0 +1,29 @@
+h2.heading {
+  text-align: center;
+  margin-top: 6rem;
+  color: white;
+}
+
+ul.products-list {
+  margin-top: 3rem;
+  list-style: none;
+  padding-inline: 0;
+}
+
+li.product-item {
+  margin: 1rem;
+}
+
+li.product-item > a {
+  color: white;
+ text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+li.product-item > a:hover {
+  color: thistle;
+  border-bottom: 1px solid thistle;
+}
