@@ -4,6 +4,7 @@ import QuoteDetails from "./pages/QuoteDetails";
 import Quotes from "./pages/Quotes";
 import Comments from "./components/comments/Comments";
 import Layout from "./components/layout/Layout";
+import NotFound from "./components/UI/NotFound";
 
 function App() {
   return (
@@ -11,10 +12,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate replace to="/quotes" />} />
         <Route path="/quotes" element={<Quotes />} />
-        <Route path="/quotes/:quoteId" element={<QuoteDetails />}>
+        <Route path="/quotes/:quoteId/*" element={<QuoteDetails />}>
           <Route path="comments" element={<Comments />} />
         </Route>
         <Route path="/new-quote" element={<NewQuote />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );

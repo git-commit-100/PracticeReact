@@ -3,18 +3,18 @@
   color: white;
   border-radius: 6px;
   padding: 3rem;
-  margin: 3rem auto;
+  margin: 0 auto;
   width: 90%;
   max-width: 40rem;
 }
 
 .quote p {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
 }
 
 .quote figcaption {
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: right;
   color: #a1e0e0;
 }

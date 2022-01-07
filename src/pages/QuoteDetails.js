@@ -1,16 +1,27 @@
 import React from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
+import HighlightedQuote from "../components/quotes/HighlightedQuote";
 
 function QuoteDetails() {
   const params = useParams();
   const { quoteId } = params;
   return (
-    <div>
-      <h2>Quote Detail Page</h2>
-      <p>{quoteId}</p>
+    <>
+      <HighlightedQuote quoteId={quoteId} />
       {/* render child nested route here */}
+      {/* direct path (without `/` means path derived from parent ) */}
+      <Routes>
+        <Route
+          path={"/"}
+          element={
+            <Link className="btn centered" to={`comments`}>
+              Load Comments
+            </Link>
+          }
+        ></Route>
+      </Routes>
       <Outlet />
-    </div>
+    </>
   );
 }
 

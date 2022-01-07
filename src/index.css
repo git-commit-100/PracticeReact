@@ -23,6 +23,7 @@ body {
 }
 
 .btn {
+  font: inherit;
   text-decoration: none;
   background-color: teal;
   color: white;
@@ -39,6 +40,7 @@ body {
 }
 
 .btn--flat {
+  font: inherit;
   cursor: pointer;
   font: inherit;
   color: teal;

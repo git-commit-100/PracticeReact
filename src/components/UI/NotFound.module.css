@@ -1,0 +1,25 @@
+.error-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2.error-heading {
+  font-size: 28px;
+}
+
+img.error-png {
+  height: auto;
+  width: 70%;
+}
+
+button.go-to-home-btn {
+  margin: 1rem auto;
+  font-size: 18px;
+}
+
+button.go-to-home-btn > a {
+  text-decoration: none;
+  color: white;
+}

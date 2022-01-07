@@ -1,4 +1,3 @@
-import React from "react";
 import QuoteList from "../components/quotes/QuoteList";
 
 const DUMMY_QUOTES = [
@@ -14,16 +13,11 @@ const DUMMY_QUOTES = [
   },
   {
     id: "q3",
-    author: "Jim Halpert",
-    text: "I miss Dwight. Congratulations, universe. You win.",
-  },
-  {
-    id: "q4",
     author: "Andy Bernard",
     text: " I wish there was a way to know you're in the good old days, before you've actually left them",
   },
   {
-    id: "q5",
+    id: "q4",
     author: "Micheal Scott",
     text: "I guess I've been working so hard, I forgot what it's like to be hardly working.",
   },

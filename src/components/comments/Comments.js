@@ -11,7 +11,7 @@ const Comments = () => {
   };
 
   return (
-    <div>
+    <div className={classes["comments-div"]}>
       <section className={classes.comments}>
         <h2>User Comments</h2>
         {!isAddingComment && (

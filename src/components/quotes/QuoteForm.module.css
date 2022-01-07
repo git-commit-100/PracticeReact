@@ -1,3 +1,12 @@
+.form-div {
+  width: 100%;
+}
+
+h3.header {
+  font-size: 22px;
+  text-align: center;
+}
+
 .form {
   position: relative;
 }
@@ -17,9 +26,11 @@
 }
 
 .control label {
+  font-size: 20px;
   font-weight: bold;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .control input,
@@ -52,5 +63,11 @@
 }
 
 .actions button {
+  margin-top: 0.5rem;
   font-size: 1.25rem;
+}
+
+p.formEmpty {
+  text-align: center;
+  color: red;
 }

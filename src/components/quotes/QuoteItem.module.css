@@ -22,7 +22,7 @@
 .item blockquote {
   margin: 0;
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   color: #212929;
 }
 
@@ -33,5 +33,6 @@
 
 .item figcaption {
   font-style: italic;
+  font-size: 1.15rem;
   color: #566d6d;
 }
