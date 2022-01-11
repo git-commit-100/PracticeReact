@@ -25,6 +25,9 @@ const QuoteForm = (props) => {
       author: enteredAuthor,
       text: enteredText,
     };
+    //emptying input fields
+    authorInputRef.current.value = "";
+    textInputRef.current.value = "";
     props.onAddQuote(quote);
   }
 

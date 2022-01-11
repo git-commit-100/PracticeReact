@@ -1,0 +1,47 @@
+.noti-div {
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.noti-default{
+    background-color: #162b2b;
+}
+
+.noti-success {
+  background-color: rgb(24, 90, 144);
+}
+
+.noti-error {
+    background-color: rgb(165, 53, 38);
+}
+
+h3.noti-header {
+  text-transform: uppercase;
+  color: white;
+  font-size: 1rem;
+  margin-block: 0;
+}
+
+p.noti-message {
+  color: white;
+  padding-inline: 0;
+  margin-block: 0;
+}
+
+button.noti-cancel {
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+button.noti-cancel:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

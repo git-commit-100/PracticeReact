@@ -1,11 +1,15 @@
-import { Fragment } from 'react';
-
-import QuoteItem from './QuoteItem';
-import classes from './QuoteList.module.css';
+import LoadingSpinner from "../UI/LoadingSpinner";
+import QuoteItem from "./QuoteItem";
+import classes from "./QuoteList.module.css";
 
 const QuoteList = (props) => {
   return (
-    <Fragment>
+    <>
+      {props.isLoading && (
+        <div className={classes.loading}>
+          <LoadingSpinner />
+        </div>
+      )}
       <ul className={classes.list}>
         {props.quotes.map((quote) => (
           <QuoteItem
@@ -16,7 +20,7 @@ const QuoteList = (props) => {
           />
         ))}
       </ul>
-    </Fragment>
+    </>
   );
 };
 

@@ -16,7 +16,7 @@ function App() {
           <Route path="comments" element={<Comments />} />
         </Route>
         <Route path="/new-quote" element={<NewQuote />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound message="Page Not Found" />} />
       </Routes>
     </Layout>
   );
