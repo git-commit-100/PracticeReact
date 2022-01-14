@@ -4,8 +4,10 @@ import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import useHttp from "../hooks/useHttp";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import NotFound from "../components/UI/NotFound";
+import NoQuotesFound from "../components/quotes/NoQuotesFound";
+import Comments from "../components/comments/Comments";
 
-function QuoteDetails() {
+function QuoteDetails(props) {
   const { data, sendHttpRequest, error, status } = useHttp();
   const params = useParams();
   const isLoading = status === "pending";
@@ -24,25 +26,31 @@ function QuoteDetails() {
     );
   }
 
+  if (!isLoading && !data) {
+    return <NoQuotesFound />;
+  }
+
   if (error) {
     return <NotFound message={error} />;
   }
 
+  let commentsLinkJsx = data ? (
+    <Link className="btn centered" to={`./comments`}>
+      Load Comments
+    </Link>
+  ) : (
+    ""
+  );
+
   return (
     <>
-      {loading && loading}
-      {!loading && <HighlightedQuote quote={data} />}
+      {loading}
+      {!isLoading && <HighlightedQuote quote={data} />}
       {/* render child nested route here */}
       {/* direct path (without `/` means path derived from parent ) */}
       <Routes>
-        <Route
-          path={"/"}
-          element={
-            <Link className="btn centered" to={`comments`}>
-              Load Comments
-            </Link>
-          }
-        ></Route>
+        <Route index path={"/"} element={!isLoading && commentsLinkJsx}></Route>
+        <Route path={"/comments"} element={<Comments />}></Route>
       </Routes>
       <Outlet />
     </>

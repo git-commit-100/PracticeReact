@@ -1,11 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./MainNavigation.module.css";
 
 function MainNavigation() {
   return (
     <header className={styles["header"]}>
-      <h3 className={styles["logo"]}>Quotes</h3>
+      <h3 className={styles["logo"]}>
+        <Link to={"/quotes"}>Quotes</Link>
+      </h3>
       <nav className={styles["nav"]}>
         <ul>
           <li>

@@ -1,11 +1,6 @@
 import classes from "./HighlightedQuote.module.css";
-import NoQuotesFound from "./NoQuotesFound";
 
 const HighlightedQuote = (props) => {
-  
-  if (!props.quote) {
-    return <NoQuotesFound />;
-  }
 
   const { author, text } = props.quote;
   return (

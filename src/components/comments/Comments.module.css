@@ -10,3 +10,9 @@
 .comments > button {
   font-size: 1.25rem;
 }
+
+.noComments {
+  margin: 1rem 0;
+  font-style: italic;
+  font-size: 1.25rem;
+}

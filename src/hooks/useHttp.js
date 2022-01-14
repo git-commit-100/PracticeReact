@@ -1,5 +1,4 @@
-import { useReducer } from "react";
-import { useCallback } from "react/cjs/react.development";
+import { useReducer, useCallback } from "react";
 
 const URL = "https://react-https-61e56-default-rtdb.firebaseio.com";
 
