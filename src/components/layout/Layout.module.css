@@ -7,3 +7,10 @@
   width: 90%;
   max-width: 50rem;
 }
+
+@media (max-width: 550px) {
+  .main {
+    margin: 3rem auto;
+    margin-top: 1rem;
+  }
+}

@@ -18,3 +18,10 @@
   text-align: right;
   color: #a1e0e0;
 }
+
+@media (max-width: 550px) {
+  .quote {
+    width: 100%;
+    padding: 2rem;
+  }
+}

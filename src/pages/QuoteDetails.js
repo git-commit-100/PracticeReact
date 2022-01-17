@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
 import HighlightedQuote from "../components/quotes/HighlightedQuote";
 import useHttp from "../hooks/useHttp";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import NotFound from "../components/UI/NotFound";
 import NoQuotesFound from "../components/quotes/NoQuotesFound";
-import Comments from "../components/comments/Comments";
+
+//lazy loading
+const Comments = React.lazy(() => import("../components/comments/Comments"));
 
 function QuoteDetails(props) {
   const { data, sendHttpRequest, error, status } = useHttp();
@@ -45,13 +47,25 @@ function QuoteDetails(props) {
   return (
     <>
       {loading}
-      {!isLoading && <HighlightedQuote quote={data} />}
-      {/* render child nested route here */}
-      {/* direct path (without `/` means path derived from parent ) */}
-      <Routes>
-        <Route index path={"/"} element={!isLoading && commentsLinkJsx}></Route>
-        <Route path={"/comments"} element={<Comments />}></Route>
-      </Routes>
+      <Suspense
+        fallback={
+          <div className="centered">
+            <LoadingSpinner />
+          </div>
+        }
+      >
+        {!isLoading && <HighlightedQuote quote={data} />}
+        {/* render child nested route here */}
+        {/* direct path (without `/` means path derived from parent ) */}
+        <Routes>
+          <Route
+            index
+            path={"/"}
+            element={!isLoading && commentsLinkJsx}
+          ></Route>
+          <Route path={"/comments"} element={<Comments />}></Route>
+        </Routes>
+      </Suspense>
       <Outlet />
     </>
   );
