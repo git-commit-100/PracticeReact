@@ -1,66 +1,26 @@
-import React, { Component } from "react";
-import UserFinder from "./components/User/UserFinder";
-import "./App.css";
-import UserContext from "./components/store/user-context";
-import ErrorBoundary from "./components/ErrorBoundary";
+import { Switch, Route } from 'react-router-dom';
 
-// function App() {
-//   const [showUsers, setShowUsers] = useState(true);
+import Layout from './components/Layout/Layout';
+import UserProfile from './components/Profile/UserProfile';
+import AuthPage from './pages/AuthPage';
+import HomePage from './pages/HomePage';
 
-//   const handleTogglingUsers = () => {
-//     setShowUsers((prevState) => !prevState);
-//   };
-
-//   return (
-//     <div className="App">
-//       <Button onClick={handleTogglingUsers}>
-//         {showUsers ? "Hide Users" : "Show Users"}
-//       </Button>
-//       {showUsers && <UsersList users={USERS_DATA} />}
-//     </div>
-//   );
-// }
-
-const USERS_DATA = [
-  {
-    id: 1,
-    name: "Tony Stark",
-    age: 30,
-  },
-  {
-    id: 2,
-    name: "Peter Parker",
-    age: 18,
-  },
-  {
-    id: 3,
-    name: "Almighty Thor",
-    age: 135,
-  },
-  {
-    id: 4,
-    name: "Starlord",
-    age: 28,
-  },
-  {
-    id: 5,
-    name: "Steve Rogers",
-    age: 90,
-  },
-];
-
-class App extends Component {
-  render() {
-    return (
-      <UserContext.Provider value={{ users: USERS_DATA }}>
-        <div className="App">
-          <ErrorBoundary>
-            <UserFinder />
-          </ErrorBoundary>
-        </div>
-      </UserContext.Provider>
-    );
-  }
+function App() {
+  return (
+    <Layout>
+      <Switch>
+        <Route path='/' exact>
+          <HomePage />
+        </Route>
+        <Route path='/auth'>
+          <AuthPage />
+        </Route>
+        <Route path='/profile'>
+          <UserProfile />
+        </Route>
+      </Switch>
+    </Layout>
+  );
 }
 
 export default App;
