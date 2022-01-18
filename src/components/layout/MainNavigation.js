@@ -15,7 +15,7 @@ function MainNavigation() {
               className={({ isActive }) => (isActive ? styles["active"] : "")}
               to="/quotes"
             >
-              All Quotes
+              Home
             </NavLink>
           </li>
           <li>

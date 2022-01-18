@@ -40,3 +40,15 @@
   color: #e6fcfc;
   border-bottom: 1px solid #e6fcfc;
 }
+
+@media (max-width: 550px) {
+  .header {
+    padding: 0 0.5rem;
+  }
+
+  .nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}

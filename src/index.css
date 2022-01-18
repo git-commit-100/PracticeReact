@@ -35,7 +35,7 @@ body {
 }
 
 .full {
-  width: 100%;
+  width: auto;
 }
 
 .btn:hover,
@@ -60,4 +60,10 @@ body {
 .btn--flat:active {
   background-color: teal;
   color: white;
+}
+
+@media (max-width: 550px) {
+  .full {
+    width: 100%;
+  }
 }
