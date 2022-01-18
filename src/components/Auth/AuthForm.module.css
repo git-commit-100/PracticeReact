@@ -1,7 +1,7 @@
 .auth {
   margin: 3rem auto;
   width: 95%;
-  max-width: 25rem;
+  max-width: 35rem;
   border-radius: 6px;
   background-color: #38015c;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -18,9 +18,18 @@
   margin-bottom: 0.5rem;
 }
 
+p.errorText {
+  color: lightsalmon;
+  text-align: left;
+  margin-block: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .control label {
   display: block;
   color: white;
+  text-align: left;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -36,26 +45,16 @@
   padding: 0.25rem;
 }
 
+.control input.invalid {
+  background-color: lightsalmon;
+  border: 1px solid rgb(211, 9, 9);
+}
+
 .actions {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.actions button {
-  cursor: pointer;
-  font: inherit;
-  color: white;
-  background-color: #9f5ccc;
-  border: 1px solid #9f5ccc;
-  border-radius: 4px;
-  padding: 0.5rem 2.5rem;
-}
-
-.actions button:hover {
-  background-color: #873abb;
-  border-color: #873abb;
 }
 
 .actions .toggle {
