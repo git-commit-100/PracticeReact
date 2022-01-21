@@ -1,7 +1,17 @@
 .form {
   width: 95%;
-  max-width: 25rem;
+  max-width: 35rem;
   margin: 2rem auto;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+h2.header {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-block-start: 0;
+  color: #353336;
 }
 
 .control {
@@ -13,6 +23,8 @@
   margin-bottom: 0.5rem;
   color: #353336;
   display: block;
+  text-align: start;
+  margin-top: 1rem;
 }
 
 .control input {
@@ -25,21 +37,20 @@
   background-color: #f7f0fa;
 }
 
+.control input.invalid {
+  background-color: lightsalmon;
+  border: 1px solid rgb(211, 9, 9);
+}
+
+p.errorText {
+  color: rgb(211, 9, 9);
+  text-align: left;
+  margin-block: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .action {
   margin-top: 1.5rem;
-}
-
-.action button {
-  font: inherit;
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  background-color: #38015c;
-  color: white;
-  border: 1px solid #38015c;
-}
-
-.action button:hover {
-  background-color: #540d83;
-  border-color: #540d83;
+  text-align: center;
 }

@@ -1,17 +1,68 @@
-.auth {
-  margin: 3rem auto;
-  width: 95%;
-  max-width: 35rem;
+.auth-div {
+  margin: 1rem auto 3rem auto;
+  width: 68%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
   border-radius: 6px;
-  background-color: #38015c;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding: 1rem;
   text-align: center;
 }
 
+@media (max-width: 1145px) {
+  .auth-div {
+    width: 90%;
+  }
+}
+
+.img-div {
+  max-width: 45%;
+}
+
+@media (min-width: 1145px) {
+  .img-div {
+    max-width: 50%;
+  }
+}
+
+.img-div > img {
+  width: auto;
+  max-width: 100%;
+  animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.auth {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .auth-div {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .img-div {
+    max-width: 100%;
+  }
+}
+
 .auth h1 {
   text-align: center;
-  color: white;
+  color: #38015c;
 }
 
 .control {
@@ -19,7 +70,7 @@
 }
 
 p.errorText {
-  color: lightsalmon;
+  color: rgb(211, 9, 9);
   text-align: left;
   margin-block: 0;
   margin-top: 0.5rem;
@@ -28,7 +79,7 @@ p.errorText {
 
 .control label {
   display: block;
-  color: white;
+  color: #38015c;
   text-align: left;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -39,7 +90,7 @@ p.errorText {
   background-color: #f1e1fc;
   color: #38015c;
   border-radius: 4px;
-  border: 1px solid white;
+  border: 1px solid #38015c;
   width: 100%;
   text-align: left;
   padding: 0.25rem;
@@ -60,12 +111,14 @@ p.errorText {
 .actions .toggle {
   margin-top: 1rem;
   background-color: transparent;
-  color: #9f5ccc;
+  color: #38015c;
   border: none;
   padding: 0.15rem 1.5rem;
+  cursor: pointer;
 }
 
 .actions .toggle:hover {
   background-color: transparent;
-  color: #ae82cc;
+  color: #6f26a0;
+  border-bottom: 1px solid #ae82cc;
 }

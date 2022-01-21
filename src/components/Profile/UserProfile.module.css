@@ -1,8 +1,18 @@
 .profile {
-  margin: 3rem auto;
+  margin: 1rem auto;
   text-align: center;
+  border: 1px solid #ccc;
+  padding: 1rem 2rem;
+  max-width: 70%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .profile h1 {
-  font-size: 5rem;
+  font-size: 2rem;
+}
+
+@media (max-width: 1145px) {
+  .profile {
+    max-width: 90%;
+  }
 }

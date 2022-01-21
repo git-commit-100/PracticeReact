@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCallback } from "react/cjs/react.development";
 
 function useInput(validateValue) {
   const [inputValue, setInputValue] = useState("");
@@ -14,12 +15,18 @@ function useInput(validateValue) {
     setIsInputTouched(true);
   }
 
+  const resetInput = useCallback(() => {
+    setInputValue("");
+    setIsInputTouched(false);
+  }, []);
+
   return {
     inputValue,
     isInputTouched,
     handleInputChange,
     handleInputBlur,
     isInputValid,
+    resetInput,
   };
 }
 

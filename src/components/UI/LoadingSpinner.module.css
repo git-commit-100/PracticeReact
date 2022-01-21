@@ -8,14 +8,21 @@ div.spinner-div {
   z-index: 11;
 }
 
+@media (max-width: 550px) {
+  div.spinner-div {
+    width: 110%;
+    left: -2rem;
+  }
+}
+
 div.spinner {
   position: relative;
   top: 30%;
   left: 45%;
   width: 100px;
   height: 100px;
-  border: 10px solid blueviolet;
-  border-color: blueviolet transparent blueviolet transparent;
+  border: 10px solid #38015c;
+  border-color: #38015c transparent #38015c transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }

@@ -47,6 +47,7 @@ function useHttp() {
         method: method ? method : "GET",
         body: body ? JSON.stringify(body) : null,
         headers: headers ? headers : {},
+        returnSecureToken: true,
       });
 
       const data = await response.json();
