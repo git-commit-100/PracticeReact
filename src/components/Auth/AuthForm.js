@@ -95,7 +95,10 @@ const AuthForm = () => {
           return;
         } else {
           // logging user in
-          authCtx.login({ token: data.idToken, email: data.email });
+          authCtx.login({
+            token: data.idToken,
+            email: data.email,
+          });
           //redirect user to profile page
           history.replace("/profile");
           return;

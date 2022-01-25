@@ -1,5 +1,5 @@
 .auth-div {
-  margin: 1rem auto 3rem auto;
+  margin: 2rem auto 3rem auto;
   width: 68%;
   display: flex;
   flex-direction: row;
@@ -20,18 +20,11 @@
 }
 
 .img-div {
-  max-width: 45%;
-}
-
-@media (min-width: 1145px) {
-  .img-div {
-    max-width: 50%;
-  }
+  max-width: 50%;
 }
 
 .img-div > img {
-  width: auto;
-  max-width: 100%;
+  height: 20rem;
   animation: fadeIn ease 1s;
 }
 
@@ -57,6 +50,10 @@
 
   .img-div {
     max-width: 100%;
+  }
+
+  .img-div > img {
+    height: 15rem;
   }
 }
 

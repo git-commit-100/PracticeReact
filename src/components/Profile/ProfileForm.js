@@ -5,6 +5,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../store/auth-context";
 import Notification from "../UI/Notification";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import forgotPass from "../../assets/forgotPass.png";
 
 const ProfileForm = () => {
   const authCtx = useContext(AuthContext);
@@ -38,6 +39,8 @@ const ProfileForm = () => {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    //clear previous errors
+    setPassDontMatch(false);
     //checking if both passwords match
     if (newPassInput !== confirmPassInput) {
       setPassDontMatch(true);
@@ -117,49 +120,56 @@ const ProfileForm = () => {
     <>
       {loading && <LoadingSpinner />}
       {notification}
-      <form className={classes.form} onSubmit={handleFormSubmit}>
-        <h2 className={classes.header}>Password Change Form</h2>
-        {passDontMatch && (
-          <p style={{ textAlign: "center" }} className={classes.errorText}>
-            Passwords do not match ! Try again
-          </p>
-        )}
-        <div className={classes.control}>
-          <label htmlFor="new-password">New Password</label>
-          <input
-            type="password"
-            className={invalidNewPass ? classes.invalid : ""}
-            value={newPassInput}
-            onChange={handleNewPassChange}
-            onBlur={handleNewPassBlur}
-            id="new-password"
-          />
-          {invalidNewPass && (
-            <p className={classes.errorText}>
-              Password must be more than 7 characters
-            </p>
-          )}
-          <label htmlFor="new-password-confirm">Confirm New Password</label>
-          <input
-            type="password"
-            className={invalidConfirmPass ? classes.invalid : ""}
-            value={confirmPassInput}
-            onChange={handleConfirmPassChange}
-            onBlur={handleConfirmPassBlur}
-            id="new-password-confirm"
-          />
-          {invalidConfirmPass && (
-            <p className={classes.errorText}>
-              Password must be more than 7 characters
-            </p>
-          )}
-        </div>
-        <div className={classes.action}>
-          <button className="btn" type="submit" disabled={!isFormValid}>
-            Change Password
-          </button>
-        </div>
-      </form>
+      <div className={classes["profile-form-div"]}>
+        <section className={classes["img-div"]}>
+          <img src={forgotPass} alt="Forgot Password ?" />
+        </section>
+        <section className={classes["form-div"]}>
+          <form className={classes.form} onSubmit={handleFormSubmit}>
+            <h2 className={classes.header}>Password Change Form</h2>
+            {passDontMatch && (
+              <p style={{ textAlign: "center" }} className={classes.errorText}>
+                Passwords do not match ! Try again
+              </p>
+            )}
+            <div className={classes.control}>
+              <label htmlFor="new-password">New Password</label>
+              <input
+                type="password"
+                className={invalidNewPass ? classes.invalid : ""}
+                value={newPassInput}
+                onChange={handleNewPassChange}
+                onBlur={handleNewPassBlur}
+                id="new-password"
+              />
+              {invalidNewPass && (
+                <p className={classes.errorText}>
+                  Password must be more than 7 characters
+                </p>
+              )}
+              <label htmlFor="new-password-confirm">Confirm New Password</label>
+              <input
+                type="password"
+                className={invalidConfirmPass ? classes.invalid : ""}
+                value={confirmPassInput}
+                onChange={handleConfirmPassChange}
+                onBlur={handleConfirmPassBlur}
+                id="new-password-confirm"
+              />
+              {invalidConfirmPass && (
+                <p className={classes.errorText}>
+                  Password must be more than 7 characters
+                </p>
+              )}
+            </div>
+            <div className={classes.action}>
+              <button className="btn" type="submit" disabled={!isFormValid}>
+                Change Password
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
     </>
   );
 };
