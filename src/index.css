@@ -1,46 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap");
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  position: relative;
-  font-family: "Open Sans", "Lato", sans-serif;
   margin: 0;
-  overflow-x: hidden;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Lato", sans-serif;
-}
-
-.btn {
-  font: inherit;
-  cursor: pointer;
-  padding: 0.5rem 2.5rem;
-  border-radius: 8px;
-  background-color: transparent;
-  color: #38015c;
-  border: 1px solid #38015c;
-  text-align: center;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn:hover {
-  background-color: #38015c;
-  color: white;
-}
-
-button[disabled],
-button[disabled]:hover {
-  background-color: rgb(209, 208, 208);
-  color: gray;
-  cursor: not-allowed;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
