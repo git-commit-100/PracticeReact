@@ -1,7 +1,11 @@
+import Card from "./components/Layout/Card";
+
 function App() {
   return (
     <div className="App">
-      <h2>Let's get started</h2>
+      <Card>
+        <h2>Lets get started</h2>
+      </Card>
     </div>
   );
 }
