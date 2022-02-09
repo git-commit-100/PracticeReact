@@ -1,6 +1,6 @@
 :root {
   --primary: teal;
-  --secondary: hsl(180, 90%, 85%);
+  --secondary: hsl(180, 55%, 95%);
   --errorColor: hsl(7, 63%, 40%);
 }
 

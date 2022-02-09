@@ -22,6 +22,7 @@ function Card({ className, children }) {
       variants={cardVariants}
       initial="hidden"
       animate="visible"
+      layout
     >
       {children}
     </motion.div>
